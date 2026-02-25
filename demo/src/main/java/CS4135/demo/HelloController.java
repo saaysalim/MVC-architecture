@@ -16,6 +16,13 @@ public class HelloController {
         return "index";
     }
 
+    @GetMapping("/git")
+    public String gitWorkflow(Model model) {
+        model.addAttribute("title", "Git Workflow");
+        model.addAttribute("description", "Git Version Control & Collaboration");
+        return "git";
+    }
+
     @RestController
     public static class ApiController {
         
