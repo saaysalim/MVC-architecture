@@ -23,6 +23,13 @@ public class HelloController {
         return "git";
     }
 
+    @GetMapping("/architecture")
+    public String architectureDesign(Model model) {
+        model.addAttribute("title", "MVC Architecture Design");
+        model.addAttribute("description", "Detailed MVC application architecture");
+        return "architecture";
+    }
+
     @RestController
     public static class ApiController {
         
