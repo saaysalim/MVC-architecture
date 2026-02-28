@@ -115,6 +115,10 @@
             color: #1f3d5a;
         }
 
+        svg {
+            display: block;
+        }
+
         .footer {
             text-align: center;
             color: white;
@@ -138,54 +142,157 @@
     </div>
 
     <div class="section">
-        <h2>1) Layer Responsibilities</h2>
+        <h2>🔧 MVC System Architecture Diagram</h2>
+        <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 900px; margin: 20px auto; border: 2px solid #d9e2ec; border-radius: 10px; background: #f8fbff;">
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#2f4f6f" />
+                </marker>
+            </defs>
+            <!-- Container dashed box -->
+            <rect x="80" y="80" width="700" height="450" fill="none" stroke="#666" stroke-width="3" stroke-dasharray="10,5" rx="10"/>
+            <text x="100" y="65" font-size="18" font-weight="bold" fill="#666">Container (Spring Boot Application)</text>
+            
+            <!-- Client Monitor -->
+            <rect x="30" y="200" width="60" height="60" fill="#e8f4f8" stroke="#2f4f6f" stroke-width="2" rx="5"/>
+            <text x="45" y="235" font-size="12" font-weight="bold" text-anchor="middle" fill="#2f4f6f">Client</text>
+            <circle cx="60" cy="190" r="15" fill="#666" stroke="#333" stroke-width="2"/>
+            
+            <!-- Arrow: Client to Controller -->
+            <path d="M 90 230 L 140 230" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+            
+            <!-- DispatcherServlet / Controller -->
+            <rect x="140" y="160" width="120" height="140" fill="#ffd700" stroke="#b8860b" stroke-width="2" rx="5"/>
+            <text x="200" y="190" font-size="15" font-weight="bold" text-anchor="middle" fill="#333">DispatcherServlet</text>
+            <text x="200" y="215" font-size="13" font-anchor="middle" fill="#333">(Controller)</text>
+            <text x="200" y="240" font-size="12" text-anchor="middle" fill="#555">&lt;@GetMapping&gt;</text>
+            <text x="200" y="260" font-size="12" text-anchor="middle" fill="#555">Routes requests</text>
+            <text x="200" y="280" font-size="12" text-anchor="middle" fill="#555">to Handler</text>
+            
+            <!-- Arrow: Controller to View -->
+            <path d="M 200 300 L 200 380" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+            <text x="220" y="345" font-size="11" fill="#2f4f6f" font-weight="bold">Routes</text>
+            
+            <!-- Arrow: Controller to Model -->
+            <path d="M 260 230 L 340 230" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+            <text x="295" y="220" font-size="11" fill="#2f4f6f" font-weight="bold">Data</text>
+            
+            <!-- View Layer (JSP/Thymeleaf) -->
+            <rect x="140" y="380" width="120" height="120" fill="#90ee90" stroke="#228b22" stroke-width="2" rx="5"/>
+            <text x="200" y="410" font-size="15" font-weight="bold" text-anchor="middle" fill="#333">View</text>
+            <text x="200" y="435" font-size="13" text-anchor="middle" fill="#333">(Thymeleaf HTML)</text>
+            <text x="200" y="460" font-size="11" text-anchor="middle" fill="#555">Renders templates</text>
+            <text x="200" y="480" font-size="11" text-anchor="middle" fill="#555">Displays data to user</text>
+            
+            <!-- Model Layer (JavaBeans/Entities) -->
+            <rect x="340" y="160" width="120" height="140" fill="#87ceeb" stroke="#4682b4" stroke-width="2" rx="5"/>
+            <text x="400" y="190" font-size="15" font-weight="bold" text-anchor="middle" fill="#333">Model</text>
+            <text x="400" y="215" font-size="13" text-anchor="middle" fill="#333">(Java Beans)</text>
+            <text x="400" y="240" font-size="12" text-anchor="middle" fill="#555">Business Logic</text>
+            <text x="400" y="260" font-size="12" text-anchor="middle" fill="#555">Data Objects</text>
+            <text x="400" y="280" font-size="12" text-anchor="middle" fill="#555">Validation</text>
+            
+            <!-- Arrow: Model to View -->
+            <path d="M 340 240 L 260 420" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+            <text x="295" y="330" font-size="11" fill="#2f4f6f" font-weight="bold">Attributes</text>
+            
+            <!-- Arrow: Model to Database -->
+            <path d="M 460 230 L 540 230" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+            <text x="495" y="220" font-size="11" fill="#2f4f6f" font-weight="bold">Query</text>
+            
+            <!-- Arrow: View to Database -->
+            <path d="M 260 440 L 540 280" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+            <text x="380" y="370" font-size="11" fill="#2f4f6f" font-weight="bold">Data</text>
+            
+            <!-- Database -->
+            <ellipse cx="600" cy="150" rx="50" ry="25" fill="#ffb6c1" stroke="#c71585" stroke-width="2"/>
+            <path d="M 550 150 L 550 280 Q 550 305 575 305 Q 600 305 625 305 Q 650 305 650 280 L 650 150" fill="#ffb6c1" stroke="#c71585" stroke-width="2"/>
+            <ellipse cx="600" cy="305" rx="50" ry="25" fill="#ff99bb" stroke="#c71585" stroke-width="2"/>
+            <text x="600" y="230" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Database</text>
+            <text x="600" y="255" font-size="11" text-anchor="middle" fill="#555">(Persistence)</text>
+            
+            <!-- Arrow: Database response -->
+            <path d="M 620 150 L 460 200" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="5,3"/>
+            <text x="530" y="160" font-size="11" fill="#2f4f6f" font-weight="bold">Return Data</text>
+        </svg>
+    </div>
+
+    <div class="section">
+        <h2>📊 1) Component Responsibilities</h2>
         <div class="architecture-grid">
             <div class="block">
-                <h3>Controller Layer</h3>
+                <h3>🎯 Controller/Servlet</h3>
                 <ul>
-                    <li>Maps routes using <strong>@GetMapping</strong></li>
-                    <li>Creates model attributes for templates</li>
-                    <li>Exposes REST endpoints under <strong>/api</strong></li>
+                    <li>Entry point for all requests</li>
+                    <li>Routes to appropriate handler</li>
+                    <li>Passes data to Model</li>
+                    <li>Directs response to View</li>
                 </ul>
             </div>
             <div class="block">
-                <h3>View Layer</h3>
+                <h3>📱 View Layer</h3>
                 <ul>
-                    <li>Renders pages with Thymeleaf templates</li>
-                    <li>Presents architecture and workflow pages</li>
-                    <li>Provides navigation among all pages</li>
+                    <li>Thymeleaf HTML templates</li>
+                    <li>Displays data from Model</li>
+                    <li>User interface rendering</li>
+                    <li>Client interaction</li>
                 </ul>
             </div>
             <div class="block">
-                <h3>Model/Data Layer</h3>
+                <h3>💾 Model Layer</h3>
                 <ul>
-                    <li>Current demo uses lightweight model attributes</li>
-                    <li>Ready to extend with entities/services/repos</li>
-                    <li>Holds business data and validation logic</li>
+                    <li>Java Bean objects</li>
+                    <li>Business logic</li>
+                    <li>Data validation</li>
+                    <li>Database operations</li>
+                </ul>
+            </div>
+            <div class="block">
+                <h3>🗄️ Database</h3>
+                <ul>
+                    <li>Persistent data storage</li>
+                    <li>Data retrieval</li>
+                    <li>Transaction handling</li>
+                    <li>Entity persistence</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="section">
-        <h2>2) Request Processing Flow</h2>
+        <h2>🔄 2) Complete Request-Response Workflow</h2>
         <div class="flow">
-            <div><span>Step 1:</span> Browser requests a route such as <strong>/</strong> or <strong>/architecture</strong>.</div>
-            <div><span>Step 2:</span> <strong>HelloController</strong> selects the target template.</div>
-            <div><span>Step 3:</span> Attributes are attached to the model when needed.</div>
-            <div><span>Step 4:</span> Spring MVC resolves and renders the HTML template.</div>
-            <div><span>Step 5:</span> Client receives rendered page and can navigate to Git or GitHub Home.</div>
+            <div style="margin: 12px 0;"><span>1. Client Request:</span> Browser sends HTTP GET request (e.g., GET /architecture)</div>
+            <div style="margin: 12px 0;"><span>2. DispatcherServlet Receives:</span> Controller intercepts the request and routes it</div>
+            <div style="margin: 12px 0;"><span>3. Handler Method Executes:</span> @GetMapping method in HelloController runs</div>
+            <div style="margin: 12px 0;"><span>4. Model Population:</span> Controller queries Model layer for business logic and data</div>
+            <div style="margin: 12px 0;"><span>5. Database Access:</span> Model fetches data from Database via JPA/Repository</div>
+            <div style="margin: 12px 0;"><span>6. Data Return:</span> Database sends results back to Model</div>
+            <div style="margin: 12px 0;"><span>7. View Resolution:</span> Controller passes data attributes to View (template name)</div>
+            <div style="margin: 12px 0;"><span>8. Template Rendering:</span> Thymeleaf renders HTML with injected model data</div>
+            <div style="margin: 12px 0;"><span>9. Response Sent:</span> Rendered HTML sent back to client browser</div>
+            <div style="margin: 12px 0;"><span>10. Page Display:</span> Browser displays the rendered page with navigation links</div>
         </div>
     </div>
 
     <div class="section">
-        <h2>3) Routes Summary</h2>
+        <h2>🏢 3) Container Architecture</h2>
         <div class="flow">
-            <div><span>GET /</span> → Home MVC overview page</div>
-            <div><span>GET /architecture</span> → MVC design architecture page</div>
-            <div><span>GET /git</span> → Git workflow page</div>
-            <div><span>GET /api/hello?name=YourName</span> → Greeting API</div>
-            <div><span>GET /api/status</span> → Status API</div>
+            <div style="margin: 12px 0;"><span>Container Definition:</span> A Spring Boot application runs inside a container that manages components, lifecycle, and HTTP handling.</div>
+            <div style="margin: 12px 0;"><span>Spring Context:</span> IoC (Inversion of Control) container manages beans, dependencies, and component lifecycle.</div>
+            <div style="margin: 12px 0;"><span>Embedded Tomcat:</span> Acts as the servlet container within Spring Boot for HTTP request processing.</div>
+            <div style="margin: 12px 0;"><span>Separation of Concerns:</span> All three layers (Controller, View, Model) work together within the managed container environment.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📍 4) Application Routes</h2>
+        <div class="flow">
+            <div><span>GET /</span> → Home MVC overview page (index.html)</div>
+            <div><span>GET /architecture</span> → MVC design architecture diagram (this page)</div>
+            <div><span>GET /git</span> → Git workflow documentation page</div>
+            <div><span>GET /api/hello?name=YourName</span> → JSON greeting API endpoint</div>
+            <div><span>GET /api/status</span> → JSON status check API endpoint</div>
         </div>
     </div>
 
