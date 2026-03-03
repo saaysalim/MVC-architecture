@@ -143,77 +143,81 @@
 
     <div class="section">
         <h2>🔧 MVC System Architecture Diagram</h2>
-        <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 900px; margin: 20px auto; border: 2px solid #d9e2ec; border-radius: 10px; background: #f8fbff;">
+        <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 1000px; margin: 20px auto; border: 2px solid #d9e2ec; border-radius: 10px; background: #1a1a1a;">
             <defs>
-                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                    <polygon points="0 0, 10 3, 0 6" fill="#2f4f6f" />
+                <marker id="arrowhead-white" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#ffffff" />
+                </marker>
+                <marker id="arrowhead-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                    <polygon points="0 0, 10 3, 0 6" fill="#FF6B35" />
                 </marker>
             </defs>
-            <!-- Container dashed box -->
-            <rect x="80" y="80" width="700" height="450" fill="none" stroke="#666" stroke-width="3" stroke-dasharray="10,5" rx="10"/>
-            <text x="100" y="65" font-size="18" font-weight="bold" fill="#666">Container (Spring Boot Application)</text>
             
-            <!-- Client Monitor -->
-            <rect x="30" y="200" width="60" height="60" fill="#e8f4f8" stroke="#2f4f6f" stroke-width="2" rx="5"/>
-            <text x="45" y="235" font-size="12" font-weight="bold" text-anchor="middle" fill="#2f4f6f">Client</text>
-            <circle cx="60" cy="190" r="15" fill="#666" stroke="#333" stroke-width="2"/>
+            <!-- Database at top -->
+            <rect x="480" y="30" width="240" height="100" fill="#87ceeb" stroke="#4682b4" stroke-width="3" rx="10"/>
+            <text x="600" y="70" font-size="18" font-weight="bold" text-anchor="middle" fill="#000">Database</text>
+            <line x1="520" y1="80" x2="680" y2="80" stroke="#000" stroke-width="2"/>
+            <circle cx="540" cy="95" r="6" fill="#000"/>
+            <circle cx="570" cy="95" r="6" fill="#000"/>
+            <circle cx="600" cy="95" r="6" fill="#000"/>
+            <circle cx="630" cy="95" r="6" fill="#000"/>
+            <circle cx="660" cy="95" r="6" fill="#000"/>
             
-            <!-- Arrow: Client to Controller -->
-            <path d="M 90 230 L 140 230" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
+            <!-- End User (Laptop) at bottom left -->
+            <rect x="50" y="520" width="140" height="120" fill="#87ceeb" stroke="#4682b4" stroke-width="2" rx="5"/>
+            <text x="120" y="550" font-size="16" font-weight="bold" text-anchor="middle" fill="#000">End User</text>
+            <rect x="70" y="560" width="100" height="60" fill="#e8e8e8" stroke="#666" stroke-width="2" rx="3"/>
+            <circle cx="120" cy="640" r="12" fill="#666"/>
             
-            <!-- DispatcherServlet / Controller -->
-            <rect x="140" y="160" width="120" height="140" fill="#ffd700" stroke="#b8860b" stroke-width="2" rx="5"/>
-            <text x="200" y="190" font-size="15" font-weight="bold" text-anchor="middle" fill="#333">DispatcherServlet</text>
-            <text x="200" y="215" font-size="13" font-anchor="middle" fill="#333">(Controller)</text>
-            <text x="200" y="240" font-size="12" text-anchor="middle" fill="#555">&lt;@GetMapping&gt;</text>
-            <text x="200" y="260" font-size="12" text-anchor="middle" fill="#555">Routes requests</text>
-            <text x="200" y="280" font-size="12" text-anchor="middle" fill="#555">to Handler</text>
+            <!-- Request arrow from End User -->
+            <path d="M 190 560 L 320 380" stroke="#FF6B35" stroke-width="3" fill="none" marker-end="url(#arrowhead-orange)"/>
+            <text x="240" y="460" font-size="14" font-weight="bold" fill="#FF6B35">Request</text>
             
-            <!-- Arrow: Controller to View -->
-            <path d="M 200 300 L 200 380" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
-            <text x="220" y="345" font-size="11" fill="#2f4f6f" font-weight="bold">Routes</text>
+            <!-- Response arrow back to End User -->
+            <path d="M 260 540 L 190 620" stroke="#FF6B35" stroke-width="3" fill="none" marker-end="url(#arrowhead-orange)"/>
+            <text x="220" y="600" font-size="14" font-weight="bold" fill="#FF6B35">Response</text>
+            
+            <!-- Model (left) -->
+            <rect x="100" y="200" width="220" height="180" fill="#ffffff" stroke="#333" stroke-width="3" rx="8"/>
+            <rect x="110" y="210" width="200" height="30" fill="#333" stroke="#000" stroke-width="1"/>
+            <text x="210" y="235" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Model</text>
+            <text x="210" y="270" font-size="12" text-anchor="middle" fill="#000">• Handles data logic</text>
+            <text x="210" y="295" font-size="12" text-anchor="middle" fill="#000">• Interacts with</text>
+            <text x="210" y="320" font-size="12" text-anchor="middle" fill="#000">Database</text>
+            
+            <!-- Controller (center) -->
+            <rect x="400" y="200" width="220" height="180" fill="#ffffff" stroke="#333" stroke-width="3" rx="8"/>
+            <rect x="410" y="210" width="200" height="30" fill="#333" stroke="#000" stroke-width="1"/>
+            <text x="510" y="235" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Controller</text>
+            <text x="510" y="270" font-size="12" text-anchor="middle" fill="#000">• Handles request flow</text>
+            <text x="510" y="295" font-size="12" text-anchor="middle" fill="#000">• Never handles data</text>
+            <text x="510" y="320" font-size="12" text-anchor="middle" fill="#000">logic</text>
+            
+            <!-- View (right) -->
+            <rect x="700" y="200" width="220" height="180" fill="#ffffff" stroke="#333" stroke-width="3" rx="8"/>
+            <rect x="710" y="210" width="200" height="30" fill="#333" stroke="#000" stroke-width="1"/>
+            <text x="810" y="235" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">View</text>
+            <text x="810" y="270" font-size="12" text-anchor="middle" fill="#000">• Handles data</text>
+            <text x="810" y="295" font-size="12" text-anchor="middle" fill="#000">presentation</text>
+            <text x="810" y="320" font-size="12" text-anchor="middle" fill="#000">Dynamically rendered</text>
             
             <!-- Arrow: Controller to Model -->
-            <path d="M 260 230 L 340 230" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
-            <text x="295" y="220" font-size="11" fill="#2f4f6f" font-weight="bold">Data</text>
+            <path d="M 400 290 L 320 290" stroke="#ffffff" stroke-width="2.5" fill="none" marker-end="url(#arrowhead-white)"/>
             
-            <!-- View Layer (JSP/Thymeleaf) -->
-            <rect x="140" y="380" width="120" height="120" fill="#90ee90" stroke="#228b22" stroke-width="2" rx="5"/>
-            <text x="200" y="410" font-size="15" font-weight="bold" text-anchor="middle" fill="#333">View</text>
-            <text x="200" y="435" font-size="13" text-anchor="middle" fill="#333">(Thymeleaf HTML)</text>
-            <text x="200" y="460" font-size="11" text-anchor="middle" fill="#555">Renders templates</text>
-            <text x="200" y="480" font-size="11" text-anchor="middle" fill="#555">Displays data to user</text>
+            <!-- Arrow: Model to Controller -->
+            <path d="M 320 310 L 400 310" stroke="#ffffff" stroke-width="2.5" fill="none" marker-end="url(#arrowhead-white)"/>
             
-            <!-- Model Layer (JavaBeans/Entities) -->
-            <rect x="340" y="160" width="120" height="140" fill="#87ceeb" stroke="#4682b4" stroke-width="2" rx="5"/>
-            <text x="400" y="190" font-size="15" font-weight="bold" text-anchor="middle" fill="#333">Model</text>
-            <text x="400" y="215" font-size="13" text-anchor="middle" fill="#333">(Java Beans)</text>
-            <text x="400" y="240" font-size="12" text-anchor="middle" fill="#555">Business Logic</text>
-            <text x="400" y="260" font-size="12" text-anchor="middle" fill="#555">Data Objects</text>
-            <text x="400" y="280" font-size="12" text-anchor="middle" fill="#555">Validation</text>
+            <!-- Arrow: Controller to View -->
+            <path d="M 620 290 L 700 290" stroke="#ffffff" stroke-width="2.5" fill="none" marker-end="url(#arrowhead-white)"/>
+            <text x="650" y="280" font-size="12" fill="#ffffff" font-weight="bold">Fetch presentation</text>
             
-            <!-- Arrow: Model to View -->
-            <path d="M 340 240 L 260 420" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
-            <text x="295" y="330" font-size="11" fill="#2f4f6f" font-weight="bold">Attributes</text>
+            <!-- Arrow: Model to Database (up) -->
+            <path d="M 210 200 L 500 130" stroke="#ffffff" stroke-width="2.5" fill="none" marker-end="url(#arrowhead-white)"/>
+            <text x="320" y="150" font-size="12" fill="#ffffff" font-weight="bold">Fetch Data</text>
             
-            <!-- Arrow: Model to Database -->
-            <path d="M 460 230 L 540 230" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
-            <text x="495" y="220" font-size="11" fill="#2f4f6f" font-weight="bold">Query</text>
-            
-            <!-- Arrow: View to Database -->
-            <path d="M 260 440 L 540 280" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)"/>
-            <text x="380" y="370" font-size="11" fill="#2f4f6f" font-weight="bold">Data</text>
-            
-            <!-- Database -->
-            <ellipse cx="600" cy="150" rx="50" ry="25" fill="#ffb6c1" stroke="#c71585" stroke-width="2"/>
-            <path d="M 550 150 L 550 280 Q 550 305 575 305 Q 600 305 625 305 Q 650 305 650 280 L 650 150" fill="#ffb6c1" stroke="#c71585" stroke-width="2"/>
-            <ellipse cx="600" cy="305" rx="50" ry="25" fill="#ff99bb" stroke="#c71585" stroke-width="2"/>
-            <text x="600" y="230" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Database</text>
-            <text x="600" y="255" font-size="11" text-anchor="middle" fill="#555">(Persistence)</text>
-            
-            <!-- Arrow: Database response -->
-            <path d="M 620 150 L 460 200" stroke="#2f4f6f" stroke-width="2.5" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="5,3"/>
-            <text x="530" y="160" font-size="11" fill="#2f4f6f" font-weight="bold">Return Data</text>
+            <!-- Arrow: View to Database (up) -->
+            <path d="M 810 200 L 650 130" stroke="#ffffff" stroke-width="2.5" fill="none" marker-end="url(#arrowhead-white)"/>
+            <text x="730" y="150" font-size="12" fill="#ffffff" font-weight="bold">Query</text>
         </svg>
     </div>
 
